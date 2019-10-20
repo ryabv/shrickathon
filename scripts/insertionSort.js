@@ -1,5 +1,4 @@
-function insertionSort() {
-    let nums = [5,1,2,4,0,6,-1,2];
+function insertionSort(nums) {
     let sortedArray = [];
     sortedArray[nums.length - 1] = nums[nums.length - 1];
 
