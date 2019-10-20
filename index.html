@@ -1,20 +1,24 @@
 <html>
-    <script>
-        function bubbleSort() {
-            let nums = [4,3,2,1,0,2];
-
-            for (let i = 1; i <= nums.length; i++) {
-                for (let j = 0; j <= nums.length - i; j++) {
-                    if (nums[j] <= nums[j-1]) {
-                        let tmp = nums[j-1];
-                        nums[j-1] = nums[j];
-                        nums[j] = tmp;
+    <head></head>
+    <body>
+            <script>
+                    function bubbleSort() {
+                        let nums = [4,3,2,1,0,2];
+            
+                        for (let i = 1; i <= nums.length; i++) {
+                            for (let j = 0; j <= nums.length - i; j++) {
+                                if (nums[j] <= nums[j-1]) {
+                                    let tmp = nums[j-1];
+                                    nums[j-1] = nums[j];
+                                    nums[j] = tmp;
+                                }
+                            }
+                        }
+            
+                        console.log(nums);
                     }
-                }
-            }
-
-            console.log(nums);
-        }
-
-    </script>
+            
+                </script>
+    </body>
+    
 </html>
