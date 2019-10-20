@@ -27,7 +27,7 @@ function bracketsBalance(str) {
     for (let i = 0; i < (bracketsString.length / 2); i++) {
         let closingBr = brackets[bracketsString[i]];
         let start = bracketsString.indexOf(bracketsString[i]);
-        let end = bracketsString.indexOf(closingBr);
+        let end = bracketsString.lastIndexOf(closingBr);
         let substr = bracketsString.slice(start, end + 1);
 
         if (substr.length % 2 === 1) {
