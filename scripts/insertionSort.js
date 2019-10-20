@@ -1,33 +1,21 @@
 function insertionSort(nums) {
-    let sortedArray = [];
-    sortedArray[nums.length - 1] = nums[nums.length - 1];
+    for (let sortedPartIndex = nums.length - 1; sortedPartIndex > 0; sortedPartIndex--) {
+        let checkedNum = nums[sortedPartIndex - 1];      
+        for (let j = sortedPartIndex; j <= nums.length - 1; j++) {
+            if (checkedNum >= nums[j]) {
+                nums[j - 1] = nums[j];
 
-    for (let i = nums.length - 1; i > 0; i--) {
-        let checkedNum = nums[i - 1];
-
-        for (let j = 0; j < sortedArray.length; j++) {
-            if (typeof sortedArray[j] === 'undefined') {
-                continue;
+                if (j === nums.length - 1) {
+                    nums[j] = checkedNum;
+                }
             }
 
-            if (checkedNum > sortedArray[j]) {
-                sortedArray[j - 1] = sortedArray[j];
-            }
-
-            if (j === sortedArray.length - 1 && checkedNum >= sortedArray[j]) {
-                sortedArray[j] = checkedNum;
+            if (checkedNum < nums[j]) {
+                nums[j - 1] = checkedNum;
                 break;
             }
-
-            if (checkedNum <= sortedArray[j]) {
-                sortedArray[j - 1] = checkedNum;
-                break;
-            }
-
-            
         }
     }
 
-    console.log(sortedArray);
-
+    console.log(nums);
 }
