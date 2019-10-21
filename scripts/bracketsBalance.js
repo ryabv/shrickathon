@@ -4,37 +4,41 @@ const brackets = {
     '[': ']'
 };
 
+function getBracketsString(str) {
+    return str.match(/[\(\)\[\]\{\}]/g).join('');
+}
+
 function bracketsBalance(str) {
+    let string = getBracketsString(str);
+    let stack = [];
     let isBalanced = true;
-    let bracketsString = '';
 
-    for (let i = 0; i < str.length; i++) {
-        if (   str[i] === '(' 
-            || str[i] === '{' 
-            || str[i] === '['
-            || str[i] === ')' 
-            || str[i] === '}' 
-            || str[i] === ']') {
-                bracketsString += str[i];
+    if (string.length % 2 !== 0) {
+        console.log('Не чётное количество скобок');
+        return false;
+    }
+
+    for (let i = 0; i < string.length; i++) {
+        if (str[i] === '{' || str[i] === '[' || str[i] === '(') {
+            stack.push(str[i]);
+        } else {
+            if (!stack.length) {
+                console.log('Не хватает открывающей скобки');
+                return false;
+            }
+
+            let lastEl = stack.pop();
+            if (str[i] !== brackets[lastEl]) {
+                console.log('Нарушен порядок следования скобок');
+                return false;
+            }
         }
     }
 
-    if (bracketsString.length % 2 === 1) {
-        isBalanced = false;
-        return isBalanced;
+    if (stack.length) {
+        console.log('Скобки не парные');
+        return false;
     }
 
-    for (let i = 0; i < (bracketsString.length / 2); i++) {
-        let closingBr = brackets[bracketsString[i]];
-        let start = bracketsString.indexOf(bracketsString[i]);
-        let end = bracketsString.lastIndexOf(closingBr);
-        let substr = bracketsString.slice(start, end + 1);
-
-        if (substr.length % 2 === 1) {
-            isBalanced = false;
-            break;
-        }
-    }
-    
     return isBalanced;
 }
