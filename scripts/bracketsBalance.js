@@ -14,7 +14,7 @@ function bracketsBalance(str) {
     let isBalanced = true;
 
     if (string.length % 2 !== 0) {
-        console.log('Не чётное количество скобок');
+        console.log('Нечётное количество скобок');
         return false;
     }
 
@@ -36,7 +36,7 @@ function bracketsBalance(str) {
     }
 
     if (stack.length) {
-        console.log('Скобки не парные');
+        console.log('Скобки непарные');
         return false;
     }
 
