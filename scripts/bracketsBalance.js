@@ -19,8 +19,8 @@ function bracketsBalance(str) {
     }
 
     for (let i = 0; i < string.length; i++) {
-        if (str[i] === '{' || str[i] === '[' || str[i] === '(') {
-            stack.push(str[i]);
+        if (string[i] === '{' || string[i] === '[' || string[i] === '(') {
+            stack.push(string[i]);
         } else {
             if (!stack.length) {
                 console.log('Не хватает открывающей скобки');
@@ -28,7 +28,8 @@ function bracketsBalance(str) {
             }
 
             let lastEl = stack.pop();
-            if (str[i] !== brackets[lastEl]) {
+            if (string[i] !== brackets[lastEl]) {
+                console.log(string[i]);
                 console.log('Нарушен порядок следования скобок');
                 return false;
             }
