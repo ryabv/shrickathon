@@ -15,7 +15,7 @@ function spiral(n) {
     let currentEdge = EDGES.TLE;
 
 
-    for (let a = 1; a <= nSquare; a++) {
+    for (let a = nSquare; a > 0; a--) {
         matrix[i][j] = a;
 
         if (j === min && i === min) {

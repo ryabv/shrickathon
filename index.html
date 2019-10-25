@@ -1,6 +1,27 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <style>
+            table {
+                border-collapse: collapse;
+                margin: 0 auto;
+            }
+            td {
+                height: 3px;
+                width: 1px;
+                font-size: 0;
+            }
+
+            .nonprime {
+                background: black;
+            }
+
+            .prime {
+                font-weight: bold;
+                color: red;
+                background: red;
+            }
+        </style>
     </head>
     <body>
         <script src="scripts/spiral.js"></script>
@@ -9,6 +30,37 @@
         <script src="scripts/singlyLinkedList.js"></script>
         <script src="scripts/binarySearch.js"></script>
         <script src="scripts/primeNumbers.js"></script>
+        <script>
+            let table = document.createElement('table');
+            let matrix = spiral(300);
+            document.body.appendChild(table);
+            
+            
+            for (let i = 0; i < matrix.length; i++) {
+                let tr = document.createElement('tr');
+                for (let j = 0; j < matrix[i].length; j++) {
+                    let td = document.createElement('td');
+                    td.innerHTML = matrix[i][j];
+
+                    checkIsPrime(matrix[i][j]) ? td.classList.add('prime') : td.classList.add('nonprime');
+
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+
+
+            function checkIsPrime(n) {
+                let isPrime = true;
+                for (let i = 1; i < n; i++) {
+                    if (i !== 1 && n % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                return isPrime;
+            }
+        </script>
     </body>
     
 </html>
